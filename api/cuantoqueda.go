@@ -9,7 +9,7 @@ import (
 type Hito struct {
 	URI  string
 	Title string
-	Date time.Time
+	fecha time.Time
 }
 
 
@@ -17,17 +17,17 @@ var hitos = []Hito {
 	Hito {
 		URI: "0.Repositorio",
 		Title: "Datos básicos y repo",
-		Date: time.Date(2020, time.September, 29, 11, 30, 0, 0, time.UTC),
+		fecha: time.Date(2020, time.September, 29, 11, 30, 0, 0, time.UTC),
 	},
 	Hito {
 		URI: "1.Infraestructura",
 		Title: "HUs y entidad principal",
-		Date: time.Date(2020, time.October, 6, 11, 30, 0, 0, time.UTC),
+		fecha: time.Date(2020, time.October, 6, 11, 30, 0, 0, time.UTC),
 	},
 	Hito {
 		URI: "2.Tests",
 		Title: "Tests iniciales",
-		Date: time.Date(2020, time.October, 16, 11, 30, 0, 0, time.UTC),
+		fecha: time.Date(2020, time.October, 16, 11, 30, 0, 0, time.UTC),
 	},
 	Hito {
 		URI: "3.Contenedores",
@@ -43,7 +43,7 @@ var hitos = []Hito {
 
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	var currentTime Time := time.Now()
+	currentTime := time.Now()
 	var next int
 	var queda time.Duration
 	for indice, hito := range hitos {
@@ -53,6 +53,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if ( next > 0 ) {
-		fmt.Fprintf(w, queda)
+		fmt.Fprintf(w, queda.String())
 	}
 }
