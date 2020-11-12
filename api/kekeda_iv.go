@@ -86,11 +86,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			default:
 				text = "No me sé ese comando"
 		}
-		msg := fmt.Sprintf("{\"text\": \"%s\", %d,\"method\":\"sendMessage\"}",
+		msg := fmt.Sprintf("{\"text\": \"%s\", \"chat_id\": \"%d\",\"method\":\"sendMessage\"}",
 			text,
 			update.Message.Chat.ID, 
 		)
 		log.Printf("JSON %s", msg)
+		w.Header().Add("Content-Type", "application/json")
 		fmt.Fprintf(w,msg)
 	}
 }
