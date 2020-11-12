@@ -76,15 +76,22 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	if update.Message.IsCommand() {
 		text := ""
-		switch update.Message.Command() {
-		case "kk":
-			if ( next > 0 ) {
+		if ( next == 0 ) {
+			text = "Ninguna entrega próxima"
+		} else {
+
+			switch update.Message.Command() {
+			case "kk":
 				text = queda.String()
-			} else {
-				text = "Ninguna entrega próxima"
-			}
+			case "kekeda":
+				text = fmt.Sprintf( "→ Próximo hito %s -- 🔗 https://jj.github.io/IV/documentos/proyecto/%s -- 📅 %s",
+					hitos[next].Title,
+					hitos[next].URI,
+					hitos[next].fecha.String(),
+				)
 			default:
 				text = "No me sé ese comando"
+			}
 		}
 		msg := fmt.Sprintf("{\"text\": \"%s\", \"chat_id\": \"%d\",\"method\":\"sendMessage\"}",
 			text,
