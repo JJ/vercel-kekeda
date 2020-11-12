@@ -84,20 +84,20 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			case "kk":
 				text = queda.String()
 			case "kekeda":
-				text = fmt.Sprintf( "→ Próximo hito %s -- 🔗 https://jj.github.io/IV/documentos/proyecto/%s -- 📅 %s",
+				text = fmt.Sprintf( "→ Próximo hito %s\n🔗 https://jj.github.io/IV/documentos/proyecto/%s\n📅 %s",
 					hitos[next].Title,
 					hitos[next].URI,
 					hitos[next].fecha.String(),
 				)
 			default:
-				text = "No me sé ese comando"
+				text = "Usa /kk para lo que queda para el próximo hito, /kekeda para + detalle"
 			}
 		}
 		msg := fmt.Sprintf("{\"text\": \"%s\", \"chat_id\": \"%d\",\"method\":\"sendMessage\"}",
 			text,
 			update.Message.Chat.ID, 
 		)
-		log.Printf("JSON %s", msg)
+		log.Printf("Response %s", msg)
 		w.Header().Add("Content-Type", "application/json")
 		fmt.Fprintf(w,msg)
 	}
