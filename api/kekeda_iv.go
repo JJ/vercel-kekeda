@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"time"
-//	"github.com/go-telegram-bot-api/telegram-bot-api"
+	"encoding/json"
+	"github.com/go-telegram-bot-api/telegram-bot-api"
 	"log"
 	"io/ioutil"
 )
@@ -15,6 +16,11 @@ type Hito struct {
 	fecha time.Time
 }
 
+type Response struct {
+	Msg string `json:"text"`
+	ChatID int64 `json:"chat_id"`
+	Method string `json:"method"`
+}
 
 var hitos = []Hito {
 	Hito {
@@ -54,7 +60,11 @@ var hitos = []Hito {
 func Handler(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	body, _ := ioutil.ReadAll(r.Body)
-	log.Printf("%s", body)
+	var update tgbotapi.Update
+	if err := json.Unmarshal(body,&update); err != nil {
+		log.Fatal("Error en el update →", err)
+	}
+	log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 	currentTime := time.Now()
 	var next int
 	var queda time.Duration
@@ -64,9 +74,23 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 			queda = hito.fecha.Sub( currentTime )
 		}
 	}
-	if ( next > 0 ) {
-		fmt.Fprintf(w, queda.String())
-	} else {
-		fmt.Fprintf(w, "Ninguna entrega próxima" )
+	if update.Message.IsCommand() {
+		text := ""
+		switch update.Message.Command() {
+		case "kk":
+			if ( next > 0 ) {
+				text = queda.String()
+			} else {
+				text = "Ninguna entrega próxima"
+			}
+			default:
+				text = "No me sé ese comando"
+		}
+		msg := fmt.Sprintf("{\"text\": \"%s\", %d,\"method\":\"sendMessage\"}",
+			text,
+			update.Message.Chat.ID, 
+		)
+		log.Printf("JSON %s", msg)
+		fmt.Fprintf(w,msg)
 	}
 }
