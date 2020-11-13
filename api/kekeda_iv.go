@@ -95,11 +95,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 		data := Response{ Msg: text,
 			Method: "sendMessage",
-			ChatId: update.Message.Chat.ID }
+			ChatID: update.Message.Chat.ID }
 
 		msg, _ := json.Marshal( data )
-		log.Printf("Response %s", msg)
+		log.Printf("Response %s", string(msg))
 		w.Header().Add("Content-Type", "application/json")
-		fmt.Fprintf(w,msg)
+		fmt.Fprintf(w,string(msg))
 	}
 }
