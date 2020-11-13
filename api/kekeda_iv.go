@@ -51,7 +51,7 @@ var hitos = []Hito {
 	Hito {
 		URI: "5.Serverless",
 		Title: "Trabajando con funciones serverless",
-		fecha: time.Date(2020, time.November, 22, 11, 30, 0, 0, time.UTC),
+		fecha: time.Date(2020, time.November, 24, 11, 30, 0, 0, time.UTC),
 	},
 
 }
@@ -93,10 +93,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 				text = "Usa /kk para lo que queda para el próximo hito, /kekeda para + detalle"
 			}
 		}
-		msg := fmt.Sprintf("{\"text\": \"%s\", \"chat_id\": \"%d\",\"method\":\"sendMessage\"}",
-			text,
-			update.Message.Chat.ID, 
-		)
+		data := Response{ Msg: text,
+			Method: "sendMessage",
+			ChatId: update.Message.Chat.ID }
+
+		msg, _ := json.Marshal( data )
 		log.Printf("Response %s", msg)
 		w.Header().Add("Content-Type", "application/json")
 		fmt.Fprintf(w,msg)
