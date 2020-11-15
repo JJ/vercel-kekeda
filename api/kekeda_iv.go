@@ -51,7 +51,7 @@ var hitos = []Hito {
 	Hito {
 		URI: "5.Serverless",
 		Title: "Trabajando con funciones serverless",
-		fecha: time.Date(2020, time.November, 24, 11, 30, 0, 0, time.UTC),
+		fecha: time.Date(2020, time.November, 24, 23, 59, 0, 0, time.UTC),
 	},
 
 }
