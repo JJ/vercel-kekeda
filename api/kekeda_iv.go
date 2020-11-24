@@ -53,6 +53,16 @@ var hitos = []Hito {
 		Title: "Trabajando con funciones serverless",
 		fecha: time.Date(2020, time.November, 24, 23, 59, 0, 0, time.UTC),
 	},
+	Hito {
+		URI: "6.Microservicio",
+		Title: "Diseñando un microservicio",
+		fecha: time.Date(2020, time.December, 11, 23, 59, 0, 0, time.UTC),
+	},
+	Hito {
+		URI: "7.PaaS",
+		Title: "Desplegando en un PaaS",
+		fecha: time.Date(2020, time.December, 23, 23, 59, 0, 0, time.UTC),
+	},
 
 }
 
