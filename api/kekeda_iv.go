@@ -63,6 +63,11 @@ var hitos = []Hito {
 		Title: "Desplegando en un PaaS",
 		fecha: time.Date(2020, time.December, 23, 23, 59, 0, 0, time.UTC),
 	},
+	Hito {
+		URI: "8.Despliegue en la nube",
+		Title: "Desplegando en la nube",
+		fecha: time.Date(2021, time.January, 14, 23, 59, 0, 0, time.UTC),
+	},
 
 }
 
