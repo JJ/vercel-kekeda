@@ -114,6 +114,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		if ( hito.fecha.After( currentTime ) ) {
 			next = indice
 			queda = hito.fecha.Sub( currentTime )
+			break
 		}
 	}
 	if update.Message.IsCommand() {
