@@ -103,7 +103,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	log.Printf("[%s] %s", update.Message.From.UserName, update.Message.Text)
 	currentTime := time.Now()
-	var next int
+	var next int = -1
 	var queda time.Duration
 	for indice, hito := range hitos {
 		if ( hito.fecha.After( currentTime ) ) {
@@ -114,7 +114,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	if update.Message.IsCommand() {
 		text := ""
-		if ( next == 0 ) {
+		if ( next < 0 ) {
 			text = "Ninguna entrega próxima"
 		} else {
 
