@@ -53,22 +53,22 @@ var hitos = []Hito {
 	Hito {
 		URI: "0.Repositorio",
 		Title: "Datos básicos y repo",
-		fecha: time.Date(2020, time.September, 17, 14, 30, 0, 0, time.UTC),
+		fecha: time.Date(2021, time.September, 17, 14, 30, 0, 0, time.UTC),
 	},
 	Hito {
 		URI: "1.Infraestructura",
 		Title: "Historias de usuario",
-		fecha: time.Date(2020, time.September, 24, 14, 30, 0, 0, time.UTC),
+		fecha: time.Date(2021, time.September, 24, 14, 30, 0, 0, time.UTC),
 	},
 	Hito {
 		URI: "2.Entidad",
 		Title: "Una entidad",
-		fecha: time.Date(2020, time.October, 1, 14, 30, 0, 0, time.UTC),
+		fecha: time.Date(2021, time.October, 1, 14, 30, 0, 0, time.UTC),
 	},
 	Hito {
 		URI: "3.Tests",
 		Title: "Creando tests",
-		fecha: time.Date(2020, time.October, 8, 14, 30, 0, 0, time.UTC),
+		fecha: time.Date(2021, time.October, 8, 14, 30, 0, 0, time.UTC),
 	},
 	Hito {
 		URI: "4.CI",
