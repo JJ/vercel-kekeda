@@ -62,13 +62,13 @@ var hitos = []Hito {
 	},
 	Hito {
 		URI: "2.Entidad",
-		Title: "Tests iniciales",
+		Title: "Una entidad",
 		fecha: time.Date(2020, time.October, 1, 14, 30, 0, 0, time.UTC),
 	},
 	Hito {
-		URI: "3.Contenedores",
-		Title: "Contenedores",
-		fecha: time.Date(2020, time.October, 26, 11, 30, 0, 0, time.UTC),
+		URI: "3.Tests",
+		Title: "Creando tests",
+		fecha: time.Date(2020, time.October, 8, 14, 30, 0, 0, time.UTC),
 	},
 	Hito {
 		URI: "4.CI",
